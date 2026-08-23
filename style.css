@@ -35,8 +35,7 @@ button:hover {
     border: 2px solid black;
     border-radius: 8px;
     font-size: 22px;
-    display: flex;
-    justify-content: center;
+
 }
 
 .explain {
