@@ -1,4 +1,4 @@
-const prompts = [
+let prompts = [
   "You are an assistant construction manager preparing for your first project meeting. Your supervisor wants to use one real project scheduling method, but you believe a different real scheduling method would work better. Write about 350 words persuading your supervisor to change plans. Include specific advantages and disadvantages of each method.",
   "You work for a company that manufactures cleaning products. Your manager is considering replacing one real chemical ingredient with another real ingredient. Write about 350 words explaining whether this change is a good idea. Include information about safety, cost, effectiveness, and environmental impact.",
   "You are the newest electrical engineer on your team. The team currently uses one real testing instrument, but you recommend a different real instrument. Write about 350 words persuading the team to make the switch. Explain how each instrument works and why your recommendation is better.",
@@ -57,8 +57,8 @@ let last_prompt = -1
 function pick_prompt() {
     let random_index;
     do {
-        random_index = Math.floor(Math.random() * prompt_array.length);
+        random_index = Math.floor(Math.random() * prompts.length);
     } while (random_index === last_prompt);
     last_prompt = random_index;
-    document.getElementById("prompt").innerHTML = prompt_array[random_index];
+    document.getElementById("prompt").innerHTML = prompts[random_index];
 }
