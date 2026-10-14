@@ -8,13 +8,25 @@
 <body>
     <h2>Click the button to choose a prompt</h2>
 
+    <div style="display:flex">
 
-<button onclick="pick_prompt()">Pick a Prompt</button>
+        <div style="width:30%">
+        <button onclick="pick_prompt1()">Prompts for Standalone Presentations</button>
+        
+        <p id="prompt_set1">
+            
+        </p>
+        </div>
+        
+        <div style="width:30%">
+        <button onclick="pick_prompt2()">Prompts for Speech Presentations</button>
+        
+        <p id="prompt_set2">
+            
+        </p>
+        </div>        
 
-<p id="prompt">
-    
-</p>
-
+        </div>
     
 <div class="explain">
 Click until you get a prompt you like; you can adjust any of these to a subject you know.
