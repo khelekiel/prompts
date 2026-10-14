@@ -1,64 +1,42 @@
-let prompts = [
-  "You are an assistant construction manager preparing for your first project meeting. Your supervisor wants to use [the name of one real project scheduling method], but you believe [the name of a different real project scheduling method] would work better. Write about 350 words persuading your supervisor to change plans. Include specific advantages and disadvantages of each method.",
-  "You work for a company that manufactures cleaning products. Your manager is considering replacing [the name of one real chemical ingredient] with [the name of another real chemical ingredient]. Write about 350 words explaining whether this change is a good idea. Include information about safety, cost, effectiveness, and environmental impact.",
-  "You are the newest electrical engineer on your team. The team currently uses [the name of one real electrical testing instrument], but you recommend [the name of a different real electrical testing instrument]. Write about 350 words persuading the team to make the switch. Explain how each instrument works and why your recommendation is better.",
-  "Your company needs to build a new customer website. Your manager has suggested [the name of one real programming language or framework], but you recommend [the name of another real programming language or framework]. Write about 350 words explaining your recommendation. Include examples of companies or projects that use the technology.",
-  "You have been asked to recommend [the name of one real bearing, gear, or motor] for a manufacturing machine. Write about 350 words explaining why your choice is better than [the name of another real bearing, gear, or motor]. Discuss performance, maintenance, cost, and expected lifespan.",
-  "A homeowner wants to build a new house. They are deciding between [the name of one real building material] and [the name of another real building material] for the exterior. Write about 350 words educating the homeowner about the strengths and weaknesses of each material and recommending one.",
-  "A local farm wants to purchase a new irrigation system. Write about 350 words comparing [the name of one real irrigation system or technology] and [the name of another real irrigation system or technology] and recommending the better choice. Include information about installation, maintenance, water use, and long-term costs.",
-  "A building project is falling behind schedule. Write about 350 words convincing the project manager to adopt [the name of one real construction management technique or software tool] to improve productivity. Explain how it works and why it would help.",
-  "Your factory must choose between [the name of one real water treatment method] and [the name of another real water treatment method]. Write about 350 words recommending one approach to the plant manager. Include technical facts, operating costs, and environmental considerations.",
-  "A homeowner wants to install backup power for their house. Write about 350 words explaining whether they should choose [the name of one real standby generator] or [the name of one real battery backup system]. Include product examples and explain the advantages and drawbacks of each.",
-  "Your school is deciding which [the name of one real database system] to use for student records. Write about 350 words recommending this option to the technology director. Explain how it compares with [the name of another real database system] and why it best fits the school's needs.",
-  "A company is replacing its air compressors. Write about 350 words recommending [the name of one real compressor type or model] over [the name of another real compressor type or model]. Include efficiency, maintenance, noise, and operating costs.",
-  "Your architecture firm is choosing [the name of one real green building certification program] for a new office building. Write about 350 words persuading the client to pursue that certification. Explain the requirements, benefits, and potential drawbacks.",
-  "A greenhouse owner wants to automate climate control. Write about 350 words recommending [the name of one real environmental control system or technology]. Include specific products or manufacturers and explain how the system improves plant growth.",
-  "Your company is considering purchasing [the name of one real construction management software package] instead of [the name of another real construction management software package]. Write about 350 words recommending the better option to company leadership. Discuss scheduling, communication, budgeting, and ease of use.",
-  "A plastics manufacturer wants to change to [the name of one real biodegradable material]. Write about 350 words explaining whether the switch is practical. Include manufacturing challenges, costs, and environmental benefits.",
-  "A factory is replacing its lighting. Write about 350 words recommending [the name of one real commercial lighting technology or product line]. Explain energy savings, installation costs, maintenance, and expected return on investment.",
-  "Your employer needs a new cybersecurity solution. Write about 350 words recommending [the name of one real cybersecurity platform or service] instead of [the name of another real cybersecurity platform or service]. Include features, costs, and situations where each product performs well.",
-  "A city is purchasing new buses. Write about 350 words recommending [the name of one real bus technology or fuel type], using [the name of one real bus manufacturer or model] as an example. Explain the benefits and trade-offs compared with other transportation options.",
-  "A family farm wants to purchase its first drone. Write about 350 words recommending [the name of one real agricultural drone model] and explaining how it can improve crop management. Include specific features and limitations.",
-  "Your company is choosing between [the name of one real concrete mix] and [the name of another real concrete mix] for a bridge project. Write about 350 words recommending one option to the project engineer. Explain the strengths, weaknesses, costs, and expected durability of each mix.",
-  "A homeowner wants to install solar panels. Write about 350 words explaining whether [the name of one real solar panel brand or model] is a better choice than [the name of another real solar panel brand or model]. Include efficiency, warranty, cost, and expected lifespan.",
-  "Your manufacturing company needs a new CAD software package. Write about 350 words recommending [the name of one real CAD program] over [the name of another real CAD program]. Explain how each program supports engineering design and collaboration.",
-  "A local government is replacing an aging water pipeline. Write about 350 words recommending [the name of one real pipe material] over [the name of another real pipe material]. Include installation, maintenance, lifespan, and environmental considerations.",
-  "You have been asked to recommend [the name of one real welding process] for a manufacturing project. Write about 350 words explaining why it is the best choice compared to [the name of another real welding process].",
-  "Your architecture firm is selecting [the name of one real roofing material] for a public library. Write about 350 words recommending your choice to the client. Include appearance, durability, maintenance, and cost.",
-  "A farm wants to reduce fertilizer use. Write about 350 words recommending [the name of one real precision agriculture technology] that could help. Explain how it works and the benefits it provides.",
-  "Your employer is choosing between [the name of one real cloud computing provider] and [the name of another real cloud computing provider]. Write about 350 words recommending one provider for the company's new engineering applications.",
-  "A warehouse is replacing its forklifts. Write about 350 words recommending [the name of one real forklift model or manufacturer] over [the name of another real forklift model or manufacturer]. Explain the advantages and disadvantages of each option.",
-  "Your city wants to install electric vehicle charging stations. Write about 350 words recommending [the name of one real charging station manufacturer or product line]. Include installation requirements, reliability, and maintenance.",
-  "A construction company is deciding whether to purchase [the name of one real drone surveying system]. Write about 350 words explaining whether the investment is worthwhile. Include specific products and examples of how they improve surveying.",
-  "Your laboratory is replacing its 3D printer. Write about 350 words recommending [the name of one real 3D printer model] over [the name of another real 3D printer model] for producing engineering prototypes.",
-  "Your employer wants to standardize on [the name of one real project communication platform]. Write about 350 words recommending your preferred software. Include features that improve teamwork and project organization.",
-  "A homeowner wants to install a new heating and cooling system. Write about 350 words comparing [the name of one real HVAC system or brand] and [the name of another real HVAC system or brand] and recommending one.",
-  "A factory is considering replacing its conveyor system. Write about 350 words recommending [the name of one real conveyor technology or manufacturer]. Include productivity, maintenance, and safety considerations.",
-  "Your architecture firm is choosing [the name of one real insulation material] for a new office building. Write about 350 words recommending your preferred material. Include energy efficiency, installation, cost, and environmental impact.",
-  "A local farm wants to improve soil health. Write about 350 words recommending [the name of one real soil testing service or technology]. Explain how it works and how it benefits the farm.",
-  "Your company needs to improve cybersecurity training. Write about 350 words recommending [the name of one real cybersecurity awareness platform] instead of [the name of another real cybersecurity awareness platform]. Include specific features and expected outcomes.",
-  "A machine shop wants to purchase a new CNC machine. Write about 350 words recommending [the name of one real CNC machine manufacturer or model]. Explain why it best meets the company's needs.",
-  "A school district is building a new STEM laboratory. Write about 350 words recommending [the name of one real laboratory equipment supplier]. Include product quality, customer support, and value.",
-  "Your company is choosing between [the name of one real web hosting service] and [the name of another real web hosting service] for a new engineering website. Write about 350 words recommending one option and explaining your reasoning.",
-  "A homeowner wants to install smart home technology. Write about 350 words recommending [the name of one real smart home ecosystem] over [the name of another real smart home ecosystem]. Include compatibility, ease of use, security, and cost.",
-  "A manufacturing plant wants to reduce workplace injuries. Write about 350 words recommending [the name of one real safety management program, certification, or technology]. Explain how it improves safety.",
-  "Your construction company is selecting [the name of one real laser measuring or layout tool]. Write about 350 words recommending your preferred instrument and explaining why it is worth the investment.",
-  "A food processing plant needs to replace its refrigeration equipment. Write about 350 words recommending [the name of one real refrigeration technology or manufacturer]. Include efficiency, maintenance, and operating costs.",
-  "Your engineering team is deciding between [the name of one real version control platform] and [the name of another real version control platform]. Write about 350 words recommending one platform for software development and explaining why it better supports collaboration.",
-  "A community is planning a new playground. Write about 350 words recommending [the name of one real playground surface material] over [the name of another real playground surface material]. Include safety, maintenance, accessibility, and long-term costs.",
-  "A farm cooperative wants to purchase a new grain dryer. Write about 350 words recommending [the name of one real grain dryer manufacturer or model]. Explain its advantages compared to [the name of another real grain dryer manufacturer or model].",
-  "Your employer is replacing office computers used for engineering design. Write about 350 words recommending [the name of one real workstation manufacturer or product line] over [the name of another real workstation manufacturer or product line]. Include processing power, reliability, and value.",
-  "A city is planning to improve pedestrian safety at busy intersections. Write about 350 words recommending [the name of one real traffic signal technology, crossing system, or traffic management solution]. Explain how it works, discuss its costs, and persuade city officials that it is the best investment."
+const prompts1 = [
+    "You are an engineer who designs custom automation equipment for manufacturing companies. Your company is preparing for a visit from a potential client and wants a looping presentation displayed in the lobby. Create a presentation showcasing a newly designed machine, including its purpose and features. The presentation must be technically accurate, informative, and interesting enough to encourage questions.",
+    "You are an architect working for a firm specializing in sustainable buildings. Your firm wants a looping presentation displayed during a community event about a new public building project. Create a presentation explaining the sustainability choices, accessibility considerations, and benefits of the project for the community.",
+    "You are a construction manager overseeing the development of a new commercial building. Your company wants a looping presentation for potential clients visiting your office. Create a presentation showcasing things that will make a good impression on visitors, such as innovative construction processes you use, safety records, and quality control procedures.",
+    "You are a mechanical engineer working for a company that develops energy-efficient heating and cooling systems. Your company wants a looping presentation for a job fair at a university. Create a presentation showcasing the type of engineering work your company does, the technical skills a candidate could develop, the materials and machinery that a candidate might be introduced to, and the safety standards of your company.",
+    "You are a chemical engineer working on a water treatment system. Create a looping presentation for a community information center giving technical but understandable details to explain how the system works, what problems it addresses, safety considerations, and benefits to the public.",
+    "You are a computer science professional developing an educational technology platform. Create a looping presentation explaining the platform's purpose, features, technical design, accessibility considerations, and benefits for students and instructors.",
+    "You are an expert. A client requested seven perpendicular red lines drawn with green and transparent ink, and with one in the form of a kitten. After this experience, your boss concluded that custom client requests need to be vetted before in person meetings with experts. To this end, you have been asked to create a looping presentation for your office's lobby to illustrate in a friendly and informative way how your department will receive requests from clients, how your department can work with the client to meet their goals, and what specific services are actually available to clients."
 ];
 
 
+const prompts2 = [
+    "You are an expert. A client wants you to draw seven red lines, all strictly perpendicular, some with green ink and some with transparent ink. Also, one of them should be in the form of a kitten. Create a presentation to explain what the possibilities are and how you can most closely meet the client's needs.",
+    "You are a chemical engineer. A company wants to replace every chemical used in production with completely natural materials. Your supervisor wants you to create a presentation explaining chemical properties, safety requirements, and why material choices depend on more than whether something is natural.",
+    "You are a mechanical engineer. A company wants a machine that uses no replacement parts and requires no inspections. Your supervisor wants you to create a presentation explaining equipment lifecycle management and safety considerations.",
+    "You are a software developer whose team has created a new application for businesses. You have been asked to present the product to the company's sales team. Create a presentation explaining how the software works, what its major features are, what problems it solves, and what technical details sales representatives should understand.",
+    "You are a computer scientist who developed a new cybersecurity system. You have been invited to explain your work to an audience of professionals outside of computer science. Create a presentation explaining the problem, your solution, how the system works, and why cybersecurity matters.",
+    "You are an architect who specializes in sustainable design. Your child's school has invited you to speak for career day. Create a presentation explaining what architects do, how buildings are designed, and how architecture can affect people's lives.",
+    "You are a construction manager responsible for workplace safety. You have been invited to speak at a company safety meeting. Create a presentation explaining common construction hazards, safety practices, and how engineering and planning improve workplace safety."
+];
 
-let last_prompt = -1
-function pick_prompt() {
+
+let last_prompt1 = -1
+function pick_prompt1() {
     let random_index;
     do {
-        random_index = Math.floor(Math.random() * prompts.length);
-    } while (random_index === last_prompt);
-    last_prompt = random_index;
-    document.getElementById("prompt").innerHTML = prompts[random_index];
+        random_index = Math.floor(Math.random() * prompts1.length);
+    } while (random_index === last_prompt1);
+    last_prompt1 = random_index;
+    document.getElementById("prompt_set1").innerHTML = prompts1[random_index];
+}
+
+
+let last_prompt2 = -1
+function pick_prompt2() {
+    let random_index;
+    do {
+        random_index = Math.floor(Math.random() * prompts2.length);
+    } while (random_index === last_prompt2);
+    last_prompt2 = random_index;
+    document.getElementById("prompt_set2").innerHTML = prompts2[random_index];
 }
