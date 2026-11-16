@@ -44,14 +44,14 @@ Graphic suggestions include a graph illustrating design loads, a labeled diagram
 
 
 
-let last_prompt1 = -1
-function pick_prompt1() {
+let last_prompt = -1
+function pick_prompt() {
     let random_index;
     do {
-        random_index = Math.floor(Math.random() * prompts1.length);
-    } while (random_index === last_prompt1);
-    last_prompt1 = random_index;
-    document.getElementById("prompt_set1").innerHTML = prompts1[random_index];
+        random_index = Math.floor(Math.random() * prompts.length);
+    } while (random_index === last_prompt);
+    last_prompt = random_index;
+    document.getElementById("prompt_set1").innerHTML = prompts[random_index];
 }
 
 
