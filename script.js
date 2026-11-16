@@ -1,23 +1,47 @@
-const prompts1 = [
-    "You are an engineer who designs custom automation equipment for manufacturing companies. Your company is preparing for a visit from a potential client and wants a looping presentation displayed in the lobby. Create a presentation showcasing a newly designed machine, including its purpose and features. The presentation must be technically accurate, informative, and interesting enough to encourage questions.",
-    "You are an architect working for a firm specializing in sustainable buildings. Your firm wants a looping presentation displayed during a community event about a new public building project. Create a presentation explaining the sustainability choices, accessibility considerations, and benefits of the project for the community.",
-    "You are a construction manager overseeing the development of a new commercial building. Your company wants a looping presentation for potential clients visiting your office. Create a presentation showcasing things that will make a good impression on visitors, such as innovative construction processes you use, safety records, and quality control procedures.",
-    "You are a mechanical engineer working for a company that develops energy-efficient heating and cooling systems. Your company wants a looping presentation for a job fair at a university. Create a presentation showcasing the type of engineering work your company does, the technical skills a candidate could develop, the materials and machinery that a candidate might be introduced to, and the safety standards of your company.",
-    "You are a chemical engineer working on a water treatment system. Create a looping presentation for a community information center giving technical but understandable details to explain how the system works, what problems it addresses, safety considerations, and benefits to the public.",
-    "You are a computer science professional developing an educational technology platform. Create a looping presentation explaining the platform's purpose, features, technical design, accessibility considerations, and benefits for students and instructors.",
-    "You are an expert. A client requested seven perpendicular red lines drawn with green and transparent ink, and with one in the form of a kitten. After this experience, your boss concluded that custom client requests need to be vetted before in person meetings with experts. To this end, you have been asked to create a looping presentation for your office's lobby to illustrate in a friendly and informative way how your department will receive requests from clients, how your department can work with the client to meet their goals, and what specific services are actually available to clients."
+const prompts = [
+`A homeowner is frustrated that their new concrete driveway cannot be driven on immediately. They believe the concrete is "dry" after one day and want to use it. Write an explanation describing why concrete continues to gain strength over time and what could happen if it is used too early.
+Graphic suggestions include a timeline showing the curing process, a diagram illustrating concrete hydration, and a comparison of properly cured and damaged concrete.`,
+`A client wants to install an unusually heavy rooftop garden. They do not understand why the contractor insists on structural calculations before approving the project. Explain how roof loads work, why weight limits exist, and how engineers determine whether a roof can safely support additional weight.
+Graphic suggestions include a cross-section of the roof, a diagram showing how loads are distributed, and a comparison of acceptable and excessive loading.`,
+`A homeowner wants to install additional electrical outlets throughout a room but has exceeded the safe electrical load for the existing circuit. They are willing to adjust their plans but do not understand the safety concern. Explain why circuits have load limits and what options are available.
+Graphic suggestions include a floor plan of the room, a simplified circuit diagram, and an illustration showing the maximum safe outlet placement.`,
+`A maintenance worker notices that a machine's bearings are replaced frequently and wants to understand why lubrication is so important. Explain what bearings do, how they reduce friction, and why proper lubrication extends their lifespan.
+Graphic suggestions include a labeled cross-section of a bearing, a diagram comparing friction with and without lubrication, and an illustration showing how lubricant protects moving parts.`,
+`A customer shopping for a bicycle asks why it has so many gears when "they all make the wheels turn." Explain how gear ratios affect speed, effort, and climbing ability.
+Graphic suggestions include diagrams comparing different gear combinations and an illustration showing how gear selection changes pedaling effort on hills and flat roads.`,
+`A city resident notices gaps in the roadway on a bridge and wonders why engineers intentionally leave spaces instead of building one continuous surface. Explain thermal expansion and how expansion joints protect bridges from damage.
+Graphic suggestions include a bridge diagram showing expansion joints, an illustration of thermal expansion, and a comparison of hot and cold weather conditions.`,
+`Your city's water department has received complaints about the taste of drinking water after treatment. Many residents are concerned that chemicals added during treatment make the water unsafe. Explain the major stages of water treatment and why these chemicals are necessary.
+Graphic suggestions include a flowchart of the treatment process, a filtration diagram, and an illustration of the disinfection stage.`,
+`A factory manager notices corrosion forming on expensive stainless steel equipment and wants to understand why it is happening. Explain how corrosion occurs and what factors can increase or reduce it.
+Graphic suggestions include a diagram of the corrosion process, illustrations of different types of corrosion, and examples of protective coatings or treatments.`,
+`A community recycling organization receives frequent questions about why different types of plastic cannot always be recycled together. Explain how plastics differ and why sorting them is necessary.
+Graphic suggestions include illustrations of common recycling symbols, a comparison of plastic types, and a simplified recycling process diagram.`,
+`Employees at a company ask why the IT department cannot simply tell them their passwords when they forget them. Explain how password hashing works and why passwords are stored differently than ordinary text.
+Graphic suggestions include a diagram of the login process, a simplified illustration of hashing, and a comparison between plaintext and hashed passwords.`,
+`A new employee is confused about the difference between files stored on their computer, shared network drives, and cloud storage. Explain how each storage method works and when each should be used.
+Graphic suggestions include a diagram showing how files are stored and synchronized, along with a comparison of local, network, and cloud storage.`,
+`A coworker notices that ZIP files are much smaller than the original files and wonders how information can become smaller without losing anything. Explain how lossless compression works.
+Graphic suggestions include an illustration showing repeated data patterns, a simplified compression workflow, and a comparison of file sizes before and after compression.`,
+`A client designing a new home wants every large window to face west because they enjoy watching sunsets. Explain how building orientation affects energy efficiency, lighting, and indoor comfort throughout the year.
+Graphic suggestions include a house floor plan, a seasonal sun path diagram, and illustrations showing sunlight entering the home at different times of day.`,
+`A business owner questions why ramps, wider hallways, and accessible entrances are necessary because they believe "most customers do not need them." Explain the principles of universal design and how accessible features benefit a wide variety of users.
+Graphic suggestions include diagrams of accessible entrances, wheelchair turning space, and comparisons between accessible and inaccessible layouts.`,
+`A restaurant owner wants to remove one emergency exit to create additional seating. Explain why building codes specify exit locations and occupancy limits and how these requirements improve safety.
+Graphic suggestions include a floor plan showing evacuation routes, a diagram illustrating occupant flow, and an example of proper exit spacing.`,
+`Your town plans to replace a four-way stop with a roundabout. Many residents believe it will be less safe because there are no stop signs. Explain how roundabouts improve traffic flow and reduce accidents.
+Graphic suggestions include diagrams comparing traffic patterns, illustrations showing how to navigate a roundabout, and a comparison of common crash types at each intersection.`,
+`A new driver experiences the brake pedal vibrating during an emergency stop and believes the brakes are malfunctioning. Explain how anti-lock braking systems (ABS) work and why the vibration is normal.
+Graphic suggestions include diagrams comparing braking with and without ABS, a sequence illustrating wheel movement during braking, and a comparison of stopping performance.`,
+`An office manager wants to purchase the highest-rated air filter available, assuming it will always improve air quality without drawbacks. Explain how air filter ratings affect both air quality and airflow within an HVAC system.
+Graphic suggestions include a diagram showing airflow through a filter, a comparison of filter ratings, and an illustration showing the relationship between filtration and airflow.`,
+`A homeowner wants to pave over their entire yard to create additional parking space. Explain how impermeable surfaces affect stormwater runoff, drainage, and flooding.
+Graphic suggestions include diagrams comparing permeable and impermeable surfaces, an illustration of stormwater runoff, and a neighborhood drainage example.`,
+`A customer wonders why a ladder rated for 300 pounds does not immediately fail when loaded with 301 pounds. Explain engineering safety factors and why products are designed with built-in margins of safety.
+Graphic suggestions include a graph illustrating design loads, a labeled diagram of the ladder, and an illustration explaining the concept of a safety factor.`
 ];
 
 
-const prompts2 = [
-    "You are an expert. A client wants you to draw seven red lines, all strictly perpendicular, some with green ink and some with transparent ink. Also, one of them should be in the form of a kitten. Create a presentation to explain what the possibilities are and how you can most closely meet the client's needs.",
-    "You are a chemical engineer. A company wants to replace every chemical used in production with completely natural materials. Your supervisor wants you to create a presentation explaining chemical properties, safety requirements, and why material choices depend on more than whether something is natural.",
-    "You are a mechanical engineer. A company wants a machine that uses no replacement parts and requires no inspections. Your supervisor wants you to create a presentation explaining equipment lifecycle management and safety considerations.",
-    "You are a software developer whose team has created a new application for businesses. You have been asked to present the product to the company's sales team. Create a presentation explaining how the software works, what its major features are, what problems it solves, and what technical details sales representatives should understand.",
-    "You are a computer scientist who developed a new cybersecurity system. You have been invited to explain your work to an audience of professionals outside of computer science. Create a presentation explaining the problem, your solution, how the system works, and why cybersecurity matters.",
-    "You are an architect who specializes in sustainable design. Your child's school has invited you to speak for career day. Create a presentation explaining what architects do, how buildings are designed, and how architecture can affect people's lives.",
-    "You are a construction manager responsible for workplace safety. You have been invited to speak at a company safety meeting. Create a presentation explaining common construction hazards, safety practices, and how engineering and planning improve workplace safety."
-];
 
 
 let last_prompt1 = -1
@@ -31,12 +55,3 @@ function pick_prompt1() {
 }
 
 
-let last_prompt2 = -1
-function pick_prompt2() {
-    let random_index;
-    do {
-        random_index = Math.floor(Math.random() * prompts2.length);
-    } while (random_index === last_prompt2);
-    last_prompt2 = random_index;
-    document.getElementById("prompt_set2").innerHTML = prompts2[random_index];
-}
